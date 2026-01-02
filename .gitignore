@@ -3,3 +3,8 @@
 data/
 *.csv
 
+
+# allow sample data
+!data_sample/
+!data_sample/**
+
