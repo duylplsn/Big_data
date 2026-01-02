@@ -1,0 +1,30 @@
+{
+  "topic": "jobs_raw",
+  "group_id": "jobs-analytics-group",
+  "bootstrap": "localhost:29092",
+  "processed": 100000,
+  "runtime_sec": 157.6,
+  "countries_seen": 4,
+  "top_countries_by_volume": [
+    [
+      "United States",
+      87340
+    ],
+    [
+      "United Kingdom",
+      6868
+    ],
+    [
+      "Canada",
+      3964
+    ],
+    [
+      "Australia",
+      1828
+    ]
+  ],
+  "top_n": 30,
+  "commit_every": 5000,
+  "idle_seconds": 120,
+  "timestamp": 1767387944
+}
