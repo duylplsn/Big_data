@@ -3,7 +3,7 @@
 Dự án xây dựng pipeline phân tích thị trường việc làm theo **dòng dữ liệu thời gian thực (streaming)** trên nền tảng **Big Data**.  
 Dữ liệu tin tuyển dụng được phát lên **Apache Kafka** dưới dạng JSON; consumer đọc theo batch để tổng hợp thống kê và xuất kết quả ra **CSV/JSON/PNG** phục vụ báo cáo.
 
----
+
 
 ## 1) Mục tiêu
 - Xây dựng pipeline **Producer → Kafka → Consumer** cho dữ liệu job postings.
@@ -13,7 +13,7 @@ Dữ liệu tin tuyển dụng được phát lên **Apache Kafka** dưới dạ
   - **Top skills** (nhóm kỹ năng xuất hiện nhiều)
 - Xuất kết quả có thể kiểm chứng và tái lập: CSV/JSON/PNG + báo cáo LaTeX.
 
----
+
 
 ## 2) Kiến trúc tổng quan
 Luồng dữ liệu:
@@ -23,7 +23,6 @@ Vai trò Kafka/Big Data:
 - Kafka là tầng ingest/streaming (commit-log), tách ingest và analytics, hỗ trợ replay dữ liệu.
 - Consumer xử lý theo batch và commit offset theo chu kỳ để kiểm soát tiến độ xử lý.
 
----
 
 ## 3) Các file/folder và nội dung
 - **kafka/**: cấu hình Docker Compose để khởi tạo Kafka/Zookeeper.
@@ -40,14 +39,13 @@ Vai trò Kafka/Big Data:
 - **requirements.txt**: danh sách thư viện Python cần để chạy producer/consumer.
 - **.gitignore**: loại bỏ dataset full/artefacts lớn khỏi repo.
 
----
+
 
 ## 4) Yêu cầu môi trường
 - Docker Desktop + Docker Compose
 - Python 3.10+ (khuyến nghị 3.11)
 
 Cài thư viện:
-```bash
 pip install -r requirements.txt
 
 ## 5) Cách chạy nhanh (Quickstart)
@@ -69,7 +67,6 @@ pip install -r requirements.txt
 - Nếu cần xuất biểu đồ PNG (phục vụ báo cáo):  
   `python app/consumer.py --bootstrap localhost:29092 --topic jobs_raw --idle-seconds 25 --top-n 30 --plot`
 
----
 
 ## 6) Output
 Sau khi consumer hoàn tất, hệ thống tạo các đầu ra phục vụ phân tích và báo cáo:
@@ -79,14 +76,13 @@ Sau khi consumer hoàn tất, hệ thống tạo các đầu ra phục vụ phâ
 - `top_skills_overall.png`: biểu đồ top skills tổng hợp.
 - Các bảng tổng hợp dạng CSV (tuỳ cấu hình consumer) để phân tích sâu hơn.
 
----
+
 
 ## 7) Ghi chú diễn giải dữ liệu
 - Kết quả “overall” phụ thuộc vào phân bố mẫu: nếu dữ liệu tập trung ở một quốc gia, các insight tổng hợp sẽ bị chi phối bởi nhóm đó.
 - Biến kỹ năng có thể bị tách do khác cách viết (ví dụ `Customer service` và `Customer Service`), vì vậy cần chuẩn hoá văn bản để xếp hạng top skills ổn định và phản ánh đúng nhu cầu năng lực.
 - Job type lệch mạnh có thể xuất phát từ cách gắn nhãn hoặc mặc định khi thiếu dữ liệu; nên kiểm tra tỷ lệ thiếu và quy tắc chuẩn hoá trước khi kết luận.
 
----
 
 ## 8) Authors
 - Đặng Đức Duy — 23020347
